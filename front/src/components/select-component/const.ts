@@ -11,8 +11,8 @@ export const options = [
   },
   {
     id: 2,
-    title: 'Контракт',
-    value: 'contracts',
+    title: 'Контакт',
+    value: 'contacts',
   },
   {
     id: 3,

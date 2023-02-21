@@ -1,11 +1,11 @@
 <template>
-  <select class="select">
+  <select class="select" :value="modelValue" @change="changeOptions">
     <option
       v-for="option in options"
       v-bind:key="option.id"
       :value="option.value"
     >
-        {{ option.title }}
+      {{ option.title }}
     </option>
   </select>
 </template>
@@ -16,9 +16,17 @@ import { options } from './const';
 
 export default defineComponent({
   name: 'SelectComponent',
+  props: {
+    modelValue: String,
+  },
   data() {
     return {
       options,
+    }
+  },
+  methods: {
+    changeOptions(e: Event) {
+      this.$emit('update:modelValue', (e?.target as HTMLSelectElement).value);
     }
   }
 });

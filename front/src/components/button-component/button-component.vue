@@ -1,5 +1,7 @@
 <template>
-  <button class="btn">{{ title }}</button>
+  <button class="btn" :disabled="isDisabled">
+    <slot></slot>
+  </button>
 </template>
 
 <script lang="ts">
@@ -13,10 +15,6 @@ export default defineComponent({
       type: String as PropType<TButtonType>,
       required: false,
       default: 'button',
-    },
-    title: {
-      type: String,
-      required: true,
     },
     isDisabled: {
       type: Boolean,
@@ -39,6 +37,14 @@ export default defineComponent({
     cursor: pointer;
     opacity: 1;
     transition: opacity .5s ease;
+    border-radius: 3px;
+  }
+
+  .btn:disabled {
+    background-color: white;
+    color: black;
+    border: 1px solid gray;
+    cursor: default;
   }
 
   .btn:hover {
